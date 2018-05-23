@@ -2,4 +2,5 @@
     <string name="app_name">MapsGoogle</string>
     <string name="api_võti">AIzaSyCb4qQFFwi6QdQ1CxtxGRwrsj3RjVW47gE</string>
     <string name="kaart">kaart</string>
+    <string name="otsi">otsi</string>
 </resources>

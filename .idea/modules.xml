@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MapsGoogle.iml" filepath="$PROJECT_DIR$/MapsGoogle.iml" />
-      <module fileurl="file://C:\Users\opilane\StudioProjects\MapsGoogle\MapsGoogle.iml" filepath="C:\Users\opilane\StudioProjects\MapsGoogle\MapsGoogle.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\opilane\StudioProjects\MapsGoogle\app\app.iml" filepath="C:\Users\opilane\StudioProjects\MapsGoogle\app\app.iml" />
     </modules>
   </component>
 </project>
