@@ -31,6 +31,20 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_search"/>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/searchText"
+            android:layout_toEndOf="@+id/ic_search"
+            android:layout_centerVertical="true"
+            android:textSize="15dp"
+            android:textColor="@color/colorText"
+            android:backgrounds="@null"
+            android:hint="@string/otsi"
+            android:maxLines="1"
+            android:inputType="@text"
+            android:imeOptions="actionSearch"/>
+
     </RelativeLayout>
 
 </RelativeLayout>

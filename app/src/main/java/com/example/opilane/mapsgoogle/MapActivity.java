@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -27,6 +28,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap gKaart;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final float DEFAULT_ZOOM = 15f;
+    private EditText stringTekst;
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -53,8 +55,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
     private void getLocationPermission() {
-        String[] permissions = (Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION);
+        String[] permissions = (Manifest.permission.ACCESS_FINE_LOCATION,)
+            Manifest.permission.ACCESS_COARSE_LOCATION
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(), COARSE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED) {
             if (ContextCompat.checkSelfPermission(this.getApplicationContext(), COARSE_LOCATION) ==
