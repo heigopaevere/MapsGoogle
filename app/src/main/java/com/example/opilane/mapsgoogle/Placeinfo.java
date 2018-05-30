@@ -15,8 +15,7 @@ public class Placeinfo {
     private float rating;
     private String attributions;
 
-    public Placeinfo(String name, String address, String phoneNimber, String id, Uri websiteUri,
-                     LatLng latLng, float rating, String attributions) {
+    public Placeinfo() {
         this.name = name;
         this.address = address;
         this.phoneNimber = phoneNimber;

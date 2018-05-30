@@ -1,5 +1,6 @@
 package com.example.opilane.mapsgoogle;
 
+
 import android.content.Context;
 import android.graphics.Typeface;
 import android.text.style.CharacterStyle;
@@ -13,26 +14,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
-
-import com.google.android.gms.common.api.GoogleApi;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.data.DataBufferUtils;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.AutocompletePredictionBuffer;
-import com.google.android.gms.location.places.AutocompletePredictionBufferResponse;
 import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.tasks.RuntimeExecutionException;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * Adapter that handles Autocomplete requests from the Places Geo Data Client.
@@ -52,7 +46,7 @@ public class PlaceAutocompleteAdapter
     /**
      * Handles autocomplete requests.
      */
-    private mGoogleApiClient googleApiClient;
+    private GoogleApiClient mGoogleApiClient;
 
     /**
      * The bounds used for Places Geo Data autocomplete API requests.
@@ -69,7 +63,7 @@ public class PlaceAutocompleteAdapter
      *
      * @see android.widget.ArrayAdapter#ArrayAdapter(android.content.Context, int)
      */
-    public PlaceAutocompleteAdapter(Context context, GeoDataClient geoDataClient,
+    public PlaceAutocompleteAdapter(Context context, GoogleApiClient googleApiClient,
                                     LatLngBounds bounds, AutocompleteFilter filter) {
         super(context, android.R.layout.simple_expandable_list_item_2, android.R.id.text1);
         mGoogleApiClient = googleApiClient;
@@ -222,30 +216,5 @@ public class PlaceAutocompleteAdapter
         }
         Log.e(TAG, "Google API client is not connected for autocomplete query.");
         return null;
-    }
-
-        // This method should have been called off the main UI thread. Block and wait for at most
-        // 60s for a result from the API.
-        try {
-            Tasks.await(results, 60, TimeUnit.SECONDS);
-        } catch (ExecutionException | InterruptedException | TimeoutException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            AutocompletePredictionBufferResponse autocompletePredictions = results.getResult();
-
-            Log.i(TAG, "Query completed. Received " + autocompletePredictions.getCount()
-                    + " predictions.");
-
-            // Freeze the results immutable representation that can be stored safely.
-            return DataBufferUtils.freezeAndClose(autocompletePredictions);
-        } catch (RuntimeExecutionException e) {
-            // If the query did not complete successfully return null
-            Toast.makeText(getContext(), "Error contacting API: " + e.toString(),
-                    Toast.LENGTH_SHORT).show();
-            Log.e(TAG, "Error getting autocomplete prediction API call", e);
-            return null;
-        }
     }
 }
